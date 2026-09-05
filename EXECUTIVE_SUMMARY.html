@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Summary: Collaborative Career Intelligence Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --primary-border: #bfdbfe;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --emerald-800: #065f46;
+      --emerald-600: #059669;
+      --emerald-50: #ecfdf5;
+      --emerald-border: #a7f3d0;
+      --amber-800: #92400e;
+      --amber-600: #d97706;
+      --amber-50: #fffbeb;
+      --amber-border: #fde68a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--slate-800);
+      background-color: #e2e8f0;
+      line-height: 1.42;
+      font-size: 11.5px;
+      -webkit-font-smoothing: antialiased;
+      padding: 20px 10px;
+    }
+
+    /* Print / Action Toolbar */
+    .action-toolbar {
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      max-width: 820px;
+      margin: 0 auto 16px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(10px);
+      padding: 10px 16px;
+      border-radius: 8px;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    }
+
+    .toolbar-info {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toolbar-btn {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+      box-shadow: 0 2px 5px rgba(37, 99, 235, 0.4);
+    }
+
+    .toolbar-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    /* 2-Page Executive Container */
+    .exec-doc {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .page {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+      border: 1px solid var(--slate-200);
+      padding: 26px 32px 22px 32px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    /* Header */
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--slate-200);
+      padding-bottom: 6px;
+    }
+
+    .doc-brand {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .doc-meta {
+      font-size: 10px;
+      color: var(--slate-500);
+      font-weight: 500;
+    }
+
+    h1.doc-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+
+    .doc-subtitle {
+      font-size: 12px;
+      color: var(--slate-600);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .badges-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 9.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-primary { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+    .badge-target { background: var(--emerald-50); color: var(--emerald-800); border: 1px solid var(--emerald-border); }
+    .badge-conf { background: var(--slate-100); color: var(--slate-600); border: 1px solid var(--slate-200); }
+
+    /* Headings */
+    h2.section-header {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--slate-900);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1.5px solid var(--slate-200);
+      padding-bottom: 3px;
+      margin-top: 10px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    h2.section-header::before {
+      content: "";
+      width: 3px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    p {
+      margin-bottom: 6px;
+      color: var(--slate-700);
+      line-height: 1.42;
+    }
+
+    ul {
+      margin-bottom: 8px;
+      padding-left: 16px;
+    }
+
+    li {
+      margin-bottom: 3px;
+      color: var(--slate-700);
+      line-height: 1.38;
+    }
+
+    li strong {
+      color: var(--slate-900);
+    }
+
+    /* Core Thesis Callout */
+    .thesis-callout {
+      background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 8px 0;
+    }
+
+    .thesis-callout .quote {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 2px;
+    }
+
+    .thesis-callout .desc {
+      font-size: 11px;
+      color: var(--slate-600);
+      line-height: 1.35;
+    }
+
+    /* Pipeline Mini Visual */
+    .pipeline-container {
+      display: grid;
+      grid-template-columns: 1.2fr auto 1.3fr auto 1.5fr;
+      align-items: center;
+      gap: 6px;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin: 8px 0 10px 0;
+      text-align: center;
+    }
+
+    .pipe-step {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 4px;
+      padding: 6px 8px;
+    }
+
+    .pipe-step.highlight {
+      border-color: var(--accent);
+      background: var(--primary-light);
+    }
+
+    .pipe-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .pipe-desc {
+      font-size: 9.5px;
+      color: var(--slate-500);
+      line-height: 1.2;
+      margin-top: 1px;
+    }
+
+    .pipe-arrow {
+      color: var(--slate-400);
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    /* 2-Column Cards */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 6px 0 10px 0;
+    }
+
+    .info-card {
+      border: 1px solid var(--slate-200);
+      border-radius: 6px;
+      padding: 9px 12px;
+      background: #ffffff;
+    }
+
+    .info-card.track-a {
+      border-top: 3px solid var(--accent);
+    }
+
+    .info-card.track-b {
+      border-top: 3px solid #10b981;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--slate-100);
+    }
+
+    .card-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .card-tag {
+      font-size: 9px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .card-tag.b2b { background: var(--primary-light); color: var(--primary); }
+    .card-tag.b2c { background: var(--emerald-50); color: var(--emerald-800); }
+
+    .card-field {
+      margin-bottom: 4px;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .card-field:last-child {
+      margin-bottom: 0;
+    }
+
+    .field-lbl {
+      font-weight: 700;
+      color: var(--slate-800);
+    }
+
+    /* 4-Box Highlights for India Dynamics */
+    .india-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 6px 0 8px 0;
+    }
+
+    .india-box {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 5px;
+      padding: 7px 8px;
+    }
+
+    .india-box-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 3px;
+      line-height: 1.25;
+    }
+
+    .india-box-desc {
+      font-size: 9.5px;
+      color: var(--slate-600);
+      line-height: 1.3;
+    }
+
+    /* Comparison Table (Compact) */
+    .table-box {
+      border: 1px solid var(--slate-200);
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 6px 0 8px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+    }
+
+    th {
+      background: var(--slate-100);
+      color: var(--slate-800);
+      font-weight: 700;
+      padding: 5px 8px;
+      border-bottom: 1px solid var(--slate-200);
+      text-transform: uppercase;
+      font-size: 9.5px;
+      letter-spacing: 0.3px;
+      text-align: left;
+    }
+
+    td {
+      padding: 5px 8px;
+      border-bottom: 1px solid var(--slate-200);
+      color: var(--slate-700);
+      line-height: 1.3;
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:nth-child(even) td {
+      background: #fafbfc;
+    }
+
+    .tbl-highlight {
+      font-weight: 600;
+      color: var(--slate-900);
+    }
+
+    /* Moat Banner */
+    .moat-banner {
+      background: #faf5ff;
+      border: 1px solid #e9d5ff;
+      border-radius: 5px;
+      padding: 6px 10px;
+      font-size: 10.5px;
+      margin-bottom: 8px;
+      color: #581c87;
+      display: flex;
+      gap: 12px;
+    }
+
+    .moat-item {
+      flex: 1;
+      line-height: 1.3;
+    }
+
+    .moat-item strong {
+      color: #3b0764;
+    }
+
+    /* 3-Column Architecture */
+    .grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 6px 0 8px 0;
+    }
+
+    .arch-block {
+      background: #f8fafc;
+      border: 1px solid var(--slate-200);
+      border-radius: 5px;
+      padding: 7px 9px;
+    }
+
+    .arch-tag {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--primary-light);
+      padding: 1px 4px;
+      border-radius: 3px;
+      display: inline-block;
+      margin-bottom: 3px;
+    }
+
+    .arch-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 4px;
+    }
+
+    .arch-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .arch-list li {
+      font-size: 9.5px;
+      color: var(--slate-600);
+      margin-bottom: 2px;
+      line-height: 1.25;
+      position: relative;
+      padding-left: 8px;
+    }
+
+    .arch-list li::before {
+      content: "•";
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+    }
+
+    /* Monetization Blocks */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 6px 0 8px 0;
+    }
+
+    .pricing-box {
+      border: 1px solid var(--slate-200);
+      border-radius: 5px;
+      padding: 8px 10px;
+      background: #ffffff;
+    }
+
+    .pricing-box.featured {
+      border-color: var(--accent);
+      background: #f0f7ff;
+    }
+
+    .price-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .price-tier {
+      font-size: 9px;
+      color: var(--slate-500);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .price-val {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 3px;
+    }
+
+    .price-val span {
+      font-size: 9.5px;
+      font-weight: 400;
+      color: var(--slate-500);
+    }
+
+    .price-desc {
+      font-size: 9.5px;
+      color: var(--slate-600);
+      line-height: 1.3;
+    }
+
+    /* Decisions Callout */
+    .decision-container {
+      background: var(--amber-50);
+      border: 1px solid var(--amber-border);
+      border-radius: 5px;
+      padding: 8px 10px;
+      margin-top: 6px;
+    }
+
+    .decision-head {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-800);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .decision-row {
+      font-size: 10px;
+      color: var(--slate-800);
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+
+    .decision-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .decision-row strong {
+      color: var(--slate-900);
+    }
+
+    /* Page Footer */
+    .page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--slate-200);
+      padding-top: 5px;
+      margin-top: 8px;
+      font-size: 9.5px;
+      color: var(--slate-500);
+    }
+
+    /* Strict 2-Page Print Layout */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 8mm 10mm 8mm 10mm;
+      }
+
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .exec-doc {
+        max-width: 100% !important;
+      }
+
+      .page {
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin-bottom: 0 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .page-2 {
+        page-break-before: always !important;
+        break-before: page !important;
+        padding-top: 4mm !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Actions Bar (Hidden in Print) -->
+  <div class="action-toolbar no-print">
+    <div class="toolbar-info">
+      <span>📄 <strong>Executive Briefing (2-Page Formatted)</strong></span>
+    </div>
+    <button class="toolbar-btn" onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <rect x="6" y="14" width="12" height="8"></rect>
+      </svg>
+      Print / Save to PDF (2 Pages)
+    </button>
+  </div>
+
+  <div class="exec-doc">
+
+    <!-- ================= PAGE 1 ================= -->
+    <div class="page page-1">
+      
+      <!-- Top Meta -->
+      <div class="header-top">
+        <span class="doc-brand">Strategic Planning & Co-Founder Review</span>
+        <span class="doc-meta">Confidential • August 2026</span>
+      </div>
+
+      <!-- Title & Badges -->
+      <h1 class="doc-title">Collaborative Career Intelligence Platform</h1>
+      <div class="doc-subtitle">Augmenting Managers and Parents as High-Leverage Navigators for the Future of Work</div>
+      
+      <div class="badges-row">
+        <span class="badge badge-primary">Executive Summary</span>
+        <span class="badge badge-target">Beachhead: India & GCCs</span>
+        <span class="badge badge-conf">Dual-Track Architecture</span>
+      </div>
+
+      <!-- Section 1: Executive Summary & Thesis -->
+      <h2 class="section-header">1. Executive Summary & Core Thesis</h2>
+      <p>
+        Mentors, managers, and parents are the primary, most trusted sources of career guidance for direct reports and youth. However, they suffer from <strong>advisor knowledge asymmetry</strong>:
+      </p>
+      <ul>
+        <li><strong>Anchor Bias:</strong> Advice is heavily constrained to the advisor's own past career trajectory (what worked 10–20 years ago).</li>
+        <li><strong>Macro Shift Acceleration:</strong> Rapid AI adoption, skill obsolescence, and new career taxonomies outpace individual intuition.</li>
+        <li><strong>The Advisor Dilemma:</strong> Direct reports and students need future-facing guidance, but advisors lack real-time labor market telemetry, 3–5 year skill forecasts, and non-obvious pathway models.</li>
+      </ul>
+
+      <div class="thesis-callout">
+        <div class="quote">Core Thesis: "Mentor-in-the-Loop" Career Intelligence</div>
+        <div class="desc">
+          <strong>Do not replace the human relationship; augment it.</strong> Existing solutions deploy impersonal chatbots or static surveys. We build a dual-view intelligence copilot: empowering the mentor with pre-meeting briefing cards and talking points, while giving the mentee an interactive trajectory sandbox.
+        </div>
+      </div>
+
+      <!-- Mini Architecture Pipeline -->
+      <div class="pipeline-container">
+        <div class="pipe-step">
+          <div class="pipe-title">1. Localized Telemetry</div>
+          <div class="pipe-desc">Naukri, AmbitionBox, Cutshort, GCCs & Exam cutoffs</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step highlight">
+          <div class="pipe-title">2. Intelligence Engine</div>
+          <div class="pipe-desc">Skill Graph • 3-5 Yr Simulation • Growth Forecasts</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-title">3. Collaborative Sync</div>
+          <div class="pipe-desc">Advisor Briefing + Mentee Sandbox + Shared Roadmap</div>
+        </div>
+      </div>
+
+      <!-- Section 2: Two High-Value Tracks -->
+      <h2 class="section-header">2. Two High-Value Use Cases</h2>
+      <div class="grid-2col">
+        <!-- Track A -->
+        <div class="info-card track-a">
+          <div class="card-top">
+            <span class="card-title">Track A: Workplace Enablement</span>
+            <span class="card-tag b2b">B2B Focus</span>
+          </div>
+          <div class="card-field"><span class="field-lbl">Relationship:</span> Manager → Direct Report (Tech Leads, GCC Managers).</div>
+          <div class="card-field"><span class="field-lbl">The Pain Point:</span> 1-on-1s default to short-term sprint status checks. Employees switch jobs for 30–40% pay jumps because internal progression is opaque.</div>
+          <div class="card-field"><span class="field-lbl">Deliverable:</span> <strong>1-on-1 Career Dossiers:</strong> Maps current competencies to high-demand skills (Service-to-Product, Distributed Systems, Applied AI).</div>
+        </div>
+
+        <!-- Track B -->
+        <div class="info-card track-b">
+          <div class="card-top">
+            <span class="card-title">Track B: Family & Youth Navigation</span>
+            <span class="card-tag b2c">B2C Focus</span>
+          </div>
+          <div class="card-field"><span class="field-lbl">Relationship:</span> Parent → High School / College Student (Grades 9–12).</div>
+          <div class="card-field"><span class="field-lbl">The Pain Point:</span> Parental anxiety. Parents recognize legacy IT hiring is slowing, but have zero objective visibility into modern careers (Fintech, BioTech, UI/UX, Quant).</div>
+          <div class="card-field"><span class="field-lbl">Deliverable:</span> <strong>Data-Backed Career Roadmaps:</strong> Stream selection (Class 10), entrance exam strategies, and emerging career viability metrics.</div>
+        </div>
+      </div>
+
+      <!-- Section 3: Why India? -->
+      <h2 class="section-header">3. Why India? Critical Market Dynamics</h2>
+      <div class="india-grid">
+        <div class="india-box">
+          <div class="india-box-title">1. High Spend on Education</div>
+          <div class="india-box-desc">Highest willingness-to-pay globally for career clarity, college coaching, and outcome assurance.</div>
+        </div>
+        <div class="india-box">
+          <div class="india-box-title">2. IT Services Disruption</div>
+          <div class="india-box-desc">Automation and AI have curbed mass campus hiring, breaking the traditional "Engineering $\rightarrow$ IT" template.</div>
+        </div>
+        <div class="india-box">
+          <div class="india-box-title">3. GCC Boom (1,600+)</div>
+          <div class="india-box-desc">Over 1.6M professionals in GCCs requiring product thinking, AI engineering, and specialized upskilling.</div>
+        </div>
+        <div class="india-box">
+          <div class="india-box-title">4. Local Data Moat</div>
+          <div class="india-box-desc">Western O*NET data is irrelevant to Indian tier-wise compensation, entrance exams, and placement models.</div>
+        </div>
+      </div>
+
+      <!-- Footer Page 1 -->
+      <div class="page-footer">
+        <span>Collaborative Career Intelligence Platform • Confidential</span>
+        <span>Page 1 of 2</span>
+      </div>
+
+    </div>
+
+    <!-- ================= PAGE 2 ================= -->
+    <div class="page page-2">
+      
+      <!-- Top Meta Page 2 -->
+      <div class="header-top">
+        <span class="doc-brand">Competitive Analysis, Architecture & Monetization</span>
+        <span class="doc-meta">Confidential • August 2026</span>
+      </div>
+
+      <!-- Section 4: Competitive Landscape -->
+      <h2 class="section-header">4. Competitive Landscape & Whitespace Analysis</h2>
+      
+      <div class="table-box">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 25%;">Category</th>
+              <th style="width: 20%;">Key Players</th>
+              <th style="width: 27%;">Primary Focus</th>
+              <th style="width: 28%;">Why They Fall Short</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tbl-highlight">Enterprise Talent Intelligence</span></td>
+              <td>Eightfold, Gloat, Fuel50</td>
+              <td>Enterprise-wide HR planning & gig matching</td>
+              <td>Built top-down for HR leaders; ignores 1-on-1 manager coaching.</td>
+            </tr>
+            <tr>
+              <td><span class="tbl-highlight">K-12 Readiness Tools</span></td>
+              <td>Xello, Naviance, Scoir</td>
+              <td>US school district college applications</td>
+              <td>Administrative compliance tools; zero dynamic labor forecasting.</td>
+            </tr>
+            <tr>
+              <td><span class="tbl-highlight">Indian EdTech & Assessments</span></td>
+              <td>Univariety, Mindler, YouScience</td>
+              <td>One-time psychometric quizzes</td>
+              <td>Static PDF outputs; no continuous skill graph or live market telemetry.</td>
+            </tr>
+            <tr>
+              <td><span class="tbl-highlight">D2C Job Search AI</span></td>
+              <td>Kickresume, CareerGPS, Pluto</td>
+              <td>Resume rewriting & auto-applications</td>
+              <td>Reactive short-term job search rather than proactive career pathing.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="moat-banner">
+        <div class="moat-item">
+          <strong>Dual-View Collaboration Moat:</strong> Specialized interfaces for both advisor and mentee (Briefing Dossier + Interactive Sandbox).
+        </div>
+        <div class="moat-item">
+          <strong>Dynamic Trajectory Engine:</strong> Simulates: <em>"Master skills A + B over 12 months $\rightarrow$ unlocks Role C with a 40% salary premium."</em>
+        </div>
+      </div>
+
+      <!-- Section 5: Architecture -->
+      <h2 class="section-header">5. System Architecture & Key Modules</h2>
+      <div class="grid-3col">
+        <div class="arch-block">
+          <span class="arch-tag">LAYER 1</span>
+          <div class="arch-title">Localized Labor Telemetry</div>
+          <ul class="arch-list">
+            <li>Indian Job Boards (Naukri, Cutshort, Instahire)</li>
+            <li>Compensation Indices (AmbitionBox, GCCs)</li>
+            <li>Academic Cutoffs (CUET, JEE, CAT, College Tiers)</li>
+          </ul>
+        </div>
+        <div class="arch-block">
+          <span class="arch-tag">LAYER 2</span>
+          <div class="arch-title">Career Intelligence Engine</div>
+          <ul class="arch-list">
+            <li>Skill Graph & Adjacency Inferences</li>
+            <li>3–5 Year Trajectory & Demand Forecaster</li>
+            <li>Automated Advisor Briefing Synthesizer</li>
+          </ul>
+        </div>
+        <div class="arch-block">
+          <span class="arch-tag">LAYER 3</span>
+          <div class="arch-title">Collaborative Application Layer</div>
+          <ul class="arch-list">
+            <li><strong>Advisor Briefing Room:</strong> 1-on-1 prep dossier</li>
+            <li><strong>Mentee Sandbox:</strong> "Day-in-Life" visualizer</li>
+            <li><strong>Shared Canvas:</strong> Mutual goals & sync tracker</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 6: Monetization Models -->
+      <h2 class="section-header">6. Business & Monetization Models</h2>
+      <div class="pricing-grid">
+        <div class="pricing-box featured">
+          <div class="price-name">B2C Family Model</div>
+          <div class="price-tier">High-Intent Parents</div>
+          <div class="price-val">₹2,999 – ₹7,999 <span>/ dossier</span></div>
+          <div class="price-desc">Milestone packs (Class 10 Stream Selection, Class 12 College Roadmap) or ₹500/mo continuous tracking.</div>
+        </div>
+        <div class="pricing-box">
+          <div class="price-name">B2B2C Institutional</div>
+          <div class="price-tier">Schools & Institutes</div>
+          <div class="price-val">₹1.5L – ₹5L <span>/ annual license</span></div>
+          <div class="price-desc">Licensed to CBSE/ICSE schools, test-prep institutes, and private universities as a value-add counseling portal.</div>
+        </div>
+        <div class="pricing-box">
+          <div class="price-name">B2B Enterprise SaaS</div>
+          <div class="price-tier">GCCs & Tech Firms</div>
+          <div class="price-val">₹300 – ₹800 <span>/ seat / mo</span></div>
+          <div class="price-desc">Sold to People Ops & Engineering VPs as a Manager Enablement & Retention Platform to curb employee churn.</div>
+        </div>
+      </div>
+
+      <!-- Section 7: Immediate Decisions -->
+      <h2 class="section-header">7. Immediate Decisions for Founding Team Alignment</h2>
+      <div class="decision-container">
+        <div class="decision-head">
+          <span>⚡</span> Critical Alignment Items for Founding Team
+        </div>
+        <div class="decision-row">
+          <strong>1. Beachhead Choice:</strong> 
+          <em>Option A:</em> B2B Enterprise / GCC Focus (faster feedback, high willingness to pay) vs. <em>Option B:</em> B2C Family Focus (massive emotional urgency, zero enterprise sales friction).
+        </div>
+        <div class="decision-row">
+          <strong>2. MVP Scope:</strong> Deeply index the top 50 high-growth roles in modern tech, data, product, and design first before expanding horizontally.
+        </div>
+        <div class="decision-row">
+          <strong>3. Viral Wedge:</strong> Launch a free, frictionless <strong>"AI 1-on-1 Prep Dossier Generator"</strong> where any manager or parent can input 3 bullet points and receive an actionable brief.
+        </div>
+      </div>
+
+      <!-- Footer Page 2 -->
+      <div class="page-footer">
+        <span>Collaborative Career Intelligence Platform • Strategy Document</span>
+        <span>Page 2 of 2</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

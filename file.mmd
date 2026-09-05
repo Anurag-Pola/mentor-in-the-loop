@@ -1,0 +1,21 @@
+flowchart TD
+    subgraph DataEngine["1. Labor & Skills Telemetry"]
+        A[O*NET & Public Labor Databases]
+        B[Real-Time Job Postings & Salary Indices]
+        C[Emerging Tech & Curriculum Trends]
+    end
+
+    subgraph IntelligenceCore["2. Career Intelligence Engine"]
+        D[Skill Graph & Knowledge Taxonomies]
+        E[Trajectory Simulator: Role & Skill Forecasts]
+        F[Aptitude & Persona Matching Engine]
+    end
+
+    subgraph DualUX["3. Dual-Perspective Application Layer"]
+        G[Advisor / Manager / Parent Portal]
+        H[Mentee / Student / Report Portal]
+        I[Collaborative 1-on-1 Shared Workspace]
+    end
+
+    DataEngine --> IntelligenceCore
+    IntelligenceCore --> DualUX
